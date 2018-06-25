@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <el-button>defautl</el-button>
+    <el-button>run</el-button>
+    <el-button>input</el-button>
+    <el-button>copy code</el-button>
     <router-view/>
   </div>
 </template>
