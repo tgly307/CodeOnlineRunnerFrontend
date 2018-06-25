@@ -1,25 +1,46 @@
 <template>
-  <el-row type="flex" justify="center">
-    <el-col :xs="24" :sm="24" :md="20" :lg="18" :xl="12">
-      <editor v-model="content" @init="editorInit" :lang="language" :theme="theme" height="400" :options="options"></editor>
-      <el-button-group>
-        <el-button>default</el-button>
-        <el-button>run</el-button>
-        <el-button>input</el-button>
-        <el-button>copy code</el-button>
-      </el-button-group>
-      <el-button @click="javascript">nodejs</el-button>
-      <el-button @click="python">python</el-button>
-      <el-button @click="cpp">c++</el-button>
-    </el-col>
-  </el-row>
+  <div>
+    <editor v-model="code" @init="editorInit" lang="javascript" theme="monokai" height="400" :options="options"></editor>
+    <button-group :running="running"
+                  :defaultCode="defaultCode"
+                  :ifInput="false"
+                  @returnDefaultCode="returnDefaultCode"
+                  @runCode="runCode"
+                  @toggleInput="toggleInput">
+    </button-group>
+    <el-row style="text-align: left">
+      <el-card header="Input:" v-show="showInput">
+        <div>
+          <el-input
+            type="textarea"
+            :autosize="{ minRows: 5, maxRows: 10}"
+            placeholder="Input data here"
+            v-model="input">
+          </el-input>
+        </div>
+      </el-card>
+      <el-card header="Output:">
+        <div>
+          <el-input
+            type="textarea"
+            :autosize="{ minRows: 5, maxRows: 10}"
+            placeholder="Output data here"
+            v-model="output">
+          </el-input>
+        </div>
+      </el-card>
+    </el-row>
+  </div>
 </template>
 
 <script>
 import editor from 'vue2-ace-editor'
+import buttonGroup from '@/components/buttonGroup'
+import request from '@/request'
 export default {
   name: 'node',
   components: {
+    buttonGroup,
     editor
   },
   data () {
@@ -29,9 +50,12 @@ export default {
         enableSnippets: true,
         enableLiveAutocompletion: true
       },
-      theme: 'monokai',
-      language: 'javascript',
-      content: ''
+      code: 'console.log("1");',
+      input: '',
+      output: '',
+      defaultCode: 'console.log("1");',
+      running: false,
+      showInput: false
     }
   },
   methods: {
@@ -39,31 +63,32 @@ export default {
       require('brace/ext/language_tools') // language extension prerequsite...
       require('brace/mode/less')
       require('brace/theme/monokai')
-      if (this.language === 'javascript') {
-        this.javascript()
-      }
-      if (this.language === 'python') {
-        this.python()
-      }
-    },
-    javascript () {
-      this.language = 'javascript'
-      this.content = 'console.log("1")'
       require('brace/mode/html')
       require('brace/mode/javascript') // language
       require('brace/snippets/javascript') // snippet
     },
-    python () {
-      this.language = 'python'
-      this.content = 'print("1")'
-      require('brace/mode/python') // language
-      require('brace/snippets/python') // snippet
+    returnDefaultCode () {
+      this.code = this.defaultCode
     },
-    cpp () {
-      this.language = 'c_cpp'
-      this.content = 'cout<<"abc"<<endl;'
-      require('brace/mode/c_cpp') // language
-      require('brace/snippets/c_cpp') // snippet
+    runCode () {
+      this.running = true
+      const data = {
+        code: this.code
+      }
+      request({
+        url: '/node',
+        method: 'post',
+        data
+      }).then(res => {
+        this.output = res.data.data
+        this.running = false
+      }).catch(e => {
+        this.output = 'Network error'
+        this.running = false
+      })
+    },
+    toggleInput () {
+      this.showInput = !this.showInput
     }
   }
 }
