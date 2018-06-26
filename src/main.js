@@ -5,9 +5,10 @@ import App from './App'
 import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import Editor from '@/components/Editor'
 
 Vue.use(Element)
-
+Vue.component('editor', Editor)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

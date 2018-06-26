@@ -19,6 +19,11 @@ export default new Router({
       path: '/python',
       name: 'python',
       component: () => import('@/views/python/python')
+    },
+    {
+      path: '/c_cpp',
+      name: 'c_cpp',
+      component: () => import('@/views/c_cpp/c_cpp')
     }
   ]
 })

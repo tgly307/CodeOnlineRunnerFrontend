@@ -1,93 +1,29 @@
 <template>
-  <div>
-    <editor v-model="code" @init="editorInit" lang="python" theme="monokai" height="400" :options="options"></editor>
-    <button-group :running="running"
-                  :defaultCode="defaultCode"
-                  :ifInput="false"
-                  @returnDefaultCode="returnDefaultCode"
-                  @runCode="runCode"
-                  @toggleInput="toggleInput">
-    </button-group>
-    <el-row style="text-align: left">
-      <el-card header="Input:" v-show="showInput">
-        <div>
-          <el-input
-            type="textarea"
-            :autosize="{ minRows: 5, maxRows: 10}"
-            placeholder="Input data here"
-            v-model="input">
-          </el-input>
-        </div>
-      </el-card>
-      <el-card header="Output:">
-        <div>
-          <el-input
-            type="textarea"
-            :autosize="{ minRows: 5, maxRows: 10}"
-            placeholder="Output data here"
-            v-model="output">
-          </el-input>
-        </div>
-      </el-card>
-    </el-row>
-  </div>
+  <editor v-model="code"
+          :lang="lang"
+          :defaultCode="defaultCode"
+          :ifInput="ifInput"
+          :codAPI="codAPI"
+          @init="editorInit">
+  </editor>
 </template>
 
 <script>
-import editor from 'vue2-ace-editor'
-import buttonGroup from '@/components/buttonGroup'
-import request from '@/request'
 export default {
-  name: 'node',
-  components: {
-    buttonGroup,
-    editor
-  },
+  name: 'python',
   data () {
     return {
-      options: {
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: true
-      },
-      code: 'print("1")',
-      input: '',
-      output: '',
+      code: '',
+      lang: 'python',
       defaultCode: 'print("1")',
-      running: false,
-      showInput: false
+      ifInput: false,
+      codAPI: '/python'
     }
   },
   methods: {
     editorInit () {
-      require('brace/ext/language_tools') // language extension prerequsite...
-      // require('brace/mode/less')
-      require('brace/theme/monokai')
       require('brace/mode/python') // language
       require('brace/snippets/python') // snippet
-    },
-    returnDefaultCode () {
-      this.code = this.defaultCode
-    },
-    runCode () {
-      this.running = true
-      const data = {
-        code: this.code
-      }
-      request({
-        url: '/python',
-        method: 'post',
-        data
-      }).then(res => {
-        this.output = res.data.data
-        this.running = false
-      }).catch(e => {
-        this.output = 'Network error'
-        this.running = false
-      })
-    },
-    toggleInput () {
-      this.showInput = !this.showInput
     }
   }
 }

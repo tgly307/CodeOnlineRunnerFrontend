@@ -10,20 +10,20 @@
 
 <script>
 export default {
-  name: 'javascript',
+  name: 'c_cpp',
   data () {
     return {
       code: '',
-      lang: 'javascript',
-      defaultCode: 'console.log("1");',
-      ifInput: false,
-      codAPI: '/node'
+      lang: 'c_cpp',
+      defaultCode: 'cout<<1<<endl;',
+      ifInput: true,
+      codAPI: '/c_cpp'
     }
   },
   methods: {
     editorInit () {
-      require('brace/mode/javascript') // language
-      require('brace/snippets/javascript') // snippet
+      require('brace/mode/c_cpp') // language
+      require('brace/snippets/c_cpp') // snippet
     }
   }
 }
