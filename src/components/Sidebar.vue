@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active="activeIndex" mode="horizontal" router>
+  <el-menu :default-active="$route.path" mode="horizontal" router>
     <el-menu-item index="/">
       Home
     </el-menu-item>
@@ -14,12 +14,7 @@
 
 <script>
 export default {
-  name: 'sidebar',
-  data () {
-    return {
-      activeIndex: this.$route.path
-    }
-  }
+  name: 'sidebar'
 }
 </script>
 

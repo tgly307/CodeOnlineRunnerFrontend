@@ -61,9 +61,9 @@ export default {
   methods: {
     editorInit () {
       require('brace/ext/language_tools') // language extension prerequsite...
-      require('brace/mode/less')
+      // require('brace/mode/less')
       require('brace/theme/monokai')
-      require('brace/mode/html')
+      // require('brace/mode/html')
       require('brace/mode/javascript') // language
       require('brace/snippets/javascript') // snippet
     },

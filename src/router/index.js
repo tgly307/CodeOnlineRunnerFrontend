@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Node from '@/views/node/node'
-import Python from '@/views/python/python'
 
 Vue.use(Router)
 
@@ -11,17 +8,17 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: () => import('@/components/HelloWorld')
     },
     {
       path: '/node',
       name: 'node',
-      component: Node
+      component: () => import('@/views/node/node')
     },
     {
       path: '/python',
       name: 'python',
-      component: Python
+      component: () => import('@/views/python/python')
     }
   ]
 })
