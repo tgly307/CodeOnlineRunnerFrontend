@@ -117,7 +117,7 @@ export default {
     runCode () {
       this.running = true
       const data = {
-        code: this.code,
+        code: this.editor.getValue(),
         input: this.input
       }
       request({
