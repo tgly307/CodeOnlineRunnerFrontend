@@ -11,12 +11,8 @@
 
 <script>
 export default {
-  name: 'Buttongroup',
+  name: 'ButtonGroup',
   props: {
-    defaultCode: {
-      type: String,
-      required: true
-    },
     running: {
       type: Boolean,
       required: true

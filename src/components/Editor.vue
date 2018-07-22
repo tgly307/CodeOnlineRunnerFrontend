@@ -2,7 +2,6 @@
   <div>
     <div style="height: 400px; width: 100%" id="editor"></div>
     <button-group :running="running"
-                  :defaultCode="defaultCode"
                   :ifInput="ifInput"
                   @returnDefaultCode="returnDefaultCode"
                   @runCode="runCode"
@@ -59,7 +58,7 @@ export default {
       type: Boolean,
       default: false
     },
-    codAPI: {
+    codeAPI: {
       type: String,
       required: true
     }
@@ -121,7 +120,7 @@ export default {
         input: this.input
       }
       request({
-        url: this.codAPI,
+        url: this.codeAPI,
         method: 'post',
         data
       }).then(res => {

@@ -3,7 +3,7 @@
           :lang="lang"
           :defaultCode="defaultCode"
           :ifInput="ifInput"
-          :codAPI="codAPI"
+          :codeAPI="codeAPI"
           @init="editorInit">
   </editor>
 </template>
@@ -17,7 +17,7 @@ export default {
       lang: 'python',
       defaultCode: 'print("1")',
       ifInput: false,
-      codAPI: '/python'
+      codeAPI: '/python'
     }
   },
   methods: {

@@ -3,7 +3,7 @@
           :lang="lang"
           :defaultCode="defaultCode"
           :ifInput="ifInput"
-          :codAPI="codAPI"
+          :codeAPI="codeAPI"
           @init="editorInit">
   </editor>
 </template>
@@ -17,7 +17,7 @@ export default {
       lang: 'c_cpp',
       defaultCode: 'cout<<1<<endl;',
       ifInput: true,
-      codAPI: '/c_cpp'
+      codeAPI: '/c_cpp'
     }
   },
   methods: {
