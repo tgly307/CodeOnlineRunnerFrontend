@@ -138,6 +138,7 @@ export default {
   beforeDestroy: function () {
     this.editor.destroy()
     this.editor.container.remove()
+    this.editor = null
   }
 }
 </script>
