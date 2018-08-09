@@ -4,7 +4,7 @@ import { Message } from 'element-ui'
 // create an axios instance
 const service = axios.create({
   baseURL: '/api', // api的base_url
-  timeout: 5000 // request timeout
+  timeout: 10 * 1000 // request timeout
 })
 
 // request interceptor
