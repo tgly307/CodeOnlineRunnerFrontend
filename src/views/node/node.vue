@@ -3,7 +3,7 @@
           :lang="lang"
           :defaultCode="defaultCode"
           :ifInput="ifInput"
-          :codAPI="codAPI"
+          :codeAPI="codeAPI"
           @init="editorInit">
   </editor>
 </template>
@@ -17,7 +17,7 @@ export default {
       lang: 'javascript',
       defaultCode: 'console.log("1");',
       ifInput: false,
-      codAPI: '/node'
+      codeAPI: '/node'
     }
   },
   methods: {
