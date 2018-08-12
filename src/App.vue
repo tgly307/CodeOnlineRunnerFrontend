@@ -1,9 +1,16 @@
 <template>
   <div id="app">
-    <el-row type="flex" justify="center">
-      <el-col :xs="24" :sm="24" :md="20" :lg="18" :xl="12">
-        <sidebar></sidebar>
-        <router-view style="margin-top: 10px"></router-view>
+    <el-row 
+      type="flex" 
+      justify="center">
+      <el-col 
+        :xs="24" 
+        :sm="24" 
+        :md="20" 
+        :lg="18" 
+        :xl="12">
+        <sidebar/>
+        <router-view style="margin-top: 10px"/>
       </el-col>
     </el-row>
   </div>

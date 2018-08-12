@@ -1,16 +1,16 @@
 <template>
-  <editor v-model="code"
-          :lang="lang"
-          :defaultCode="defaultCode"
-          :ifInput="ifInput"
-          :codeAPI="codeAPI"
-          @init="editorInit">
-  </editor>
+  <editor 
+    v-model="code"
+    :lang="lang"
+    :default-code="defaultCode"
+    :if-input="ifInput"
+    :code-api="codeAPI"
+    @init="editorInit"/>
 </template>
 
 <script>
 export default {
-  name: "c_cpp",
+  name: "CCpp",
   data() {
     return {
       code: "",

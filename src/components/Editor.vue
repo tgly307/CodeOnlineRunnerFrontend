@@ -1,21 +1,25 @@
 <template>
   <div>
-    <div style="height: 400px; width: 100%" id="editor"></div>
-    <button-group :running="running"
-                  :ifInput="ifInput"
-                  @returnDefaultCode="returnDefaultCode"
-                  @runCode="runCode"
-                  @toggleInput="toggleInput">
-    </button-group>
+    <div
+      style="height: 400px; width: 100%"
+      id="editor">
+    </div>
+    <button-group
+      :running="running"
+      :if-input="ifInput"
+      @returnDefaultCode="returnDefaultCode"
+      @runCode="runCode"
+      @toggleInput="toggleInput"/>
     <el-row style="text-align: left">
-      <el-card header="Input:" v-show="showInput">
+      <el-card
+        header="Input:"
+        v-show="showInput">
         <div>
           <el-input
             type="textarea"
             :autosize="{ minRows: 5, maxRows: 10}"
             placeholder="Input data here"
-            v-model="input">
-          </el-input>
+            v-model="input"/>
         </div>
       </el-card>
       <el-card header="Output:">
@@ -24,8 +28,7 @@
             type="textarea"
             :autosize="{ minRows: 5, maxRows: 10}"
             placeholder="Output data here"
-            v-model="output">
-          </el-input>
+            v-model="output"/>
         </div>
       </el-card>
     </el-row>
@@ -58,7 +61,7 @@ export default {
       type: Boolean,
       default: false
     },
-    codeAPI: {
+    codeApi: {
       type: String,
       required: true
     }
@@ -120,7 +123,7 @@ export default {
         input: this.input
       };
       request({
-        url: this.codeAPI,
+        url: this.codeApi,
         method: "post",
         data
       })
