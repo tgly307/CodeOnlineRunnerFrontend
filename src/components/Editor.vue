@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import ace from 'brace'
-import buttonGroup from '@/components/buttonGroup'
-import request from '@/request'
+import ace from "brace";
+import buttonGroup from "@/components/ButtonGroup";
+import request from "@/request";
 export default {
-  name: 'Editor',
+  name: "Editor",
   components: {
     buttonGroup
   },
@@ -63,86 +63,88 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       editor: null,
-      contentBackup: '',
-      input: '',
-      output: '',
+      contentBackup: "",
+      input: "",
+      output: "",
       running: false,
       showInput: false
-    }
+    };
   },
   watch: {
-    value: function (val) {
+    value: function(val) {
       if (this.contentBackup !== val) {
-        this.editor.setValue(val, 1)
+        this.editor.setValue(val, 1);
       }
     }
   },
-  mounted: function () {
-    const vm = this
+  mounted: function() {
+    const vm = this;
 
-    require('brace/ext/emmet')
+    require("brace/ext/emmet");
 
-    const editor = vm.editor = ace.edit('editor')
+    const editor = (vm.editor = ace.edit("editor"));
 
-    require('brace/ext/language_tools') // language extension prerequsite...
-    require('brace/theme/monokai')
-    this.$emit('init', editor)
+    require("brace/ext/language_tools"); // language extension prerequsite...
+    require("brace/theme/monokai");
+    this.$emit("init", editor);
 
-    editor.$blockScrolling = Infinity
-    editor.setOption('enableEmmet', true)
-    editor.getSession().setMode('ace/mode/' + this.lang)
-    editor.setTheme('ace/theme/monokai')
-    editor.setValue(this.defaultCode, 1)
-    this.contentBackup = this.value
+    editor.$blockScrolling = Infinity;
+    editor.setOption("enableEmmet", true);
+    editor.getSession().setMode("ace/mode/" + this.lang);
+    editor.setTheme("ace/theme/monokai");
+    editor.setValue(this.defaultCode, 1);
+    this.contentBackup = this.value;
 
-    editor.on('change', function () {
-      let content = editor.getValue()
-      vm.$emit('input', content)
-      vm.contentBackup = content
-    })
+    editor.on("change", function() {
+      let content = editor.getValue();
+      vm.$emit("input", content);
+      vm.contentBackup = content;
+    });
     editor.setOptions({
       enableBasicAutocompletion: true,
       enableSnippets: true,
       enableLiveAutocompletion: true
-    })
+    });
   },
   methods: {
-    returnDefaultCode () {
-      this.editor.setValue(this.defaultCode, 1)
+    returnDefaultCode() {
+      this.editor.setValue(this.defaultCode, 1);
     },
-    runCode () {
-      this.running = true
+    runCode() {
+      this.running = true;
       const data = {
         code: this.editor.getValue(),
         input: this.input
-      }
+      };
       request({
         url: this.codeAPI,
-        method: 'post',
+        method: "post",
         data
-      }).then(res => {
-        this.output = res.data.data
-        this.running = false
-      }).catch(e => {
-        this.output = 'Network error'
-        this.running = false
       })
+        .then(res => {
+          this.output = res.data.data;
+          this.running = false;
+        })
+        .catch(e => {
+          console.log(e);
+          this.output = "Network error";
+          this.running = false;
+        });
     },
-    toggleInput () {
-      this.showInput = !this.showInput
+    toggleInput() {
+      this.showInput = !this.showInput;
     }
   },
-  beforeDestroy: function () {
-    this.editor.destroy()
-    this.editor.container.remove()
-    this.editor = null
+  beforeDestroy: function() {
+    this.editor.destroy();
+    this.editor.container.remove();
+    this.editor = null;
   }
-}
+};
 </script>
 
 <style scoped>
-
 </style>

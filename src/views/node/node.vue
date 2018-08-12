@@ -10,25 +10,24 @@
 
 <script>
 export default {
-  name: 'javascript',
-  data () {
+  name: "javascript",
+  data() {
     return {
-      code: '',
-      lang: 'javascript',
+      code: "",
+      lang: "javascript",
       defaultCode: 'console.log("1");',
       ifInput: false,
-      codeAPI: '/node'
-    }
+      codeAPI: "/node"
+    };
   },
   methods: {
-    editorInit () {
-      require('brace/mode/javascript') // language
-      require('brace/snippets/javascript') // snippet
+    editorInit() {
+      require("brace/mode/javascript"); // language
+      require("brace/snippets/javascript"); // snippet
     }
   }
-}
+};
 </script>
 
 <style scoped>
-
 </style>

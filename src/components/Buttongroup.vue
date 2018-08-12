@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'ButtonGroup',
+  name: "ButtonGroup",
   props: {
     running: {
       type: Boolean,
@@ -23,19 +23,18 @@ export default {
     }
   },
   methods: {
-    returnDefaultCode () {
-      this.$emit('returnDefaultCode')
+    returnDefaultCode() {
+      this.$emit("returnDefaultCode");
     },
-    runCode () {
-      this.$emit('runCode')
+    runCode() {
+      this.$emit("runCode");
     },
-    toggleInput () {
-      this.$emit('toggleInput')
+    toggleInput() {
+      this.$emit("toggleInput");
     }
   }
-}
+};
 </script>
 
 <style scoped>
-
 </style>

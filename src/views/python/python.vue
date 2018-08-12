@@ -10,25 +10,24 @@
 
 <script>
 export default {
-  name: 'python',
-  data () {
+  name: "python",
+  data() {
     return {
-      code: '',
-      lang: 'python',
+      code: "",
+      lang: "python",
       defaultCode: 'print("1")',
       ifInput: false,
-      codeAPI: '/python'
-    }
+      codeAPI: "/python"
+    };
   },
   methods: {
-    editorInit () {
-      require('brace/mode/python') // language
-      require('brace/snippets/python') // snippet
+    editorInit() {
+      require("brace/mode/python"); // language
+      require("brace/snippets/python"); // snippet
     }
   }
-}
+};
 </script>
 
 <style scoped>
-
 </style>

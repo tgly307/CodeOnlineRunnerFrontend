@@ -14,10 +14,9 @@
 
 <script>
 export default {
-  name: 'sidebar'
-}
+  name: "sidebar"
+};
 </script>
 
 <style scoped>
-
 </style>
