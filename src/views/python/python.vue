@@ -22,8 +22,10 @@ export default {
   },
   methods: {
     editorInit() {
-      require("brace/mode/python"); // language
-      require("brace/snippets/python"); // snippet
+      require("../../../public/lang/mode-python");
+      require("../../../public/lang/snippets/python");
+      // require("brace/mode/python"); // language
+      // require("brace/snippets/python"); // snippet
     }
   }
 };

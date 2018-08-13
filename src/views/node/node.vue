@@ -22,8 +22,10 @@ export default {
   },
   methods: {
     editorInit() {
-      require("brace/mode/javascript"); // language
-      require("brace/snippets/javascript"); // snippet
+      require("../../../public/lang/mode-javascript");
+      require("../../../public/lang/snippets/javascript");
+      // require("brace/mode/javascript"); // language
+      // require("brace/snippets/javascript"); // snippet
     }
   }
 };

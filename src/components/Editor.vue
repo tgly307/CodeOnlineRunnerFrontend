@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import ace from "brace";
+// import ace from "brace";
 import buttonGroup from "@/components/Buttongroup";
 import request from "@/request";
 export default {
@@ -86,12 +86,12 @@ export default {
   mounted: function() {
     const vm = this;
 
-    require("brace/ext/emmet");
+    // require("brace/ext/emmet");
 
-    const editor = (vm.editor = ace.edit("editor"));
+    const editor = (vm.editor = window.ace.edit("editor"));
 
-    require("brace/ext/language_tools"); // language extension prerequsite...
-    require("brace/theme/monokai");
+    // require("brace/ext/language_tools"); // language extension prerequsite...
+    // require("brace/theme/monokai");
     this.$emit("init", editor);
 
     editor.$blockScrolling = Infinity;

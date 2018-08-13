@@ -22,8 +22,10 @@ export default {
   },
   methods: {
     editorInit() {
-      require("brace/mode/c_cpp"); // language
-      require("brace/snippets/c_cpp"); // snippet
+      require("../../../public/lang/mode-c_cpp");
+      require("../../../public/lang/snippets/c_cpp");
+      // require("brace/mode/c_cpp"); // language
+      // require("brace/snippets/c_cpp"); // snippet
     }
   }
 };
