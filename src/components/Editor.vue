@@ -85,13 +85,7 @@ export default {
   },
   mounted: function() {
     const vm = this;
-
-    // require("brace/ext/emmet");
-
     const editor = (vm.editor = window.ace.edit("editor"));
-
-    // require("brace/ext/language_tools"); // language extension prerequsite...
-    // require("brace/theme/monokai");
     this.$emit("init", editor);
 
     editor.$blockScrolling = Infinity;

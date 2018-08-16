@@ -24,8 +24,6 @@ export default {
     editorInit() {
       require("../../../public/lang/mode-javascript");
       require("../../../public/lang/snippets/javascript");
-      // require("brace/mode/javascript"); // language
-      // require("brace/snippets/javascript"); // snippet
     }
   }
 };

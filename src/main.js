@@ -3,11 +3,8 @@
 import Vue from "vue";
 import App from "./App";
 import router from "./router";
-// import ElementUI from "element-ui";
-// import "element-ui/lib/theme-chalk/element.css";
 import Editor from "@/components/Editor";
 
-// Vue.use(ElementUI);
 Vue.component("editor", Editor);
 Vue.config.productionTip = false;
 
