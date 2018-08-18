@@ -37,7 +37,7 @@
 
 <script>
 // import ace from "brace";
-import buttonGroup from "@/components/ButtonGroup";
+import buttonGroup from "./ButtonGroup";
 import request from "@/request";
 export default {
   name: "Editor",
