@@ -3,30 +3,30 @@ language: node_js
 node_js: stable
 
 install:
-  - yarn
+  - npm install
 
 before_script:
   - git config --global user.name "tgly307"
   - git config --global user.email "tgly307@163.com"
 
 script:
-  - yarn run build
+  - npm run build
 
 after_script:
   - cd dist
   - git add --all .
   - git commit -m "Automatically update from travis-ci"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
 branches:
   only:
     - master
 
 cache:
-  yarn: true
+  npm: true
   directories:
     - node_modules
 
 env:
  global:
-   - GH_REF: github.com:tgly307/CodeOnlineRunnerFrontend.git
+   - GH_REF: github.com:tgly307/tgly307.github.io.git
