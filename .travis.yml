@@ -29,4 +29,4 @@ cache:
 
 env:
  global:
-   - GH_REF: github.com:tgly307/tgly307.github.io.git
+   - GH_REF: github.com/tgly307/tgly307.github.io.git
