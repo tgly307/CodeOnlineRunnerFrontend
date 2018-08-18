@@ -37,7 +37,7 @@
 
 <script>
 // import ace from "brace";
-import buttonGroup from "./ButtonGroup";
+import buttonGroup from "@/components/ButtonGroup.vue";
 import request from "@/request";
 export default {
   name: "Editor",
