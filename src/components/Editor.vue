@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import buttonGroup from "./ButtonGroup";
+import buttonGroup from "./Buttongroup";
 import request from "../request";
 export default {
   name: "Editor",
