@@ -36,9 +36,8 @@
 </template>
 
 <script>
-// import ace from "brace";
-import buttonGroup from "@/components/ButtonGroup.vue";
-import request from "@/request";
+import buttonGroup from "./ButtonGroup";
+import request from "../request";
 export default {
   name: "Editor",
   components: {
