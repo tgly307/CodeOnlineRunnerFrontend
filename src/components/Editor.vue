@@ -36,9 +36,8 @@
 </template>
 
 <script>
-// import ace from "brace";
-import buttonGroup from "@/components/Buttongroup";
-import request from "@/request";
+import buttonGroup from "./Buttongroup";
+import request from "../request";
 export default {
   name: "Editor",
   components: {
